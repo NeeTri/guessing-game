@@ -14,11 +14,13 @@ public class GuessingGame{
       
       int actualnum = ((int)(Math.random() * 100) + 1);
       
-      System.out.println("Welcome to Neel Tripathi's guessing game! You get 10 chances to guess a random number from 1 to 100. Good luck!");
+      System.out.println("Welcome to the guessing game! You get 5 chances to guess a random number from 1 to 100. Good luck!");
       
-      while(count < 10){
+      while(count < 5 ){
+
+         boolean again = true;
          
-         System.out.println("What's your guess?:");
+         System.out.println("\n" +"What's your guess?:");
          try{
          user_num = scan.nextInt();
          
@@ -50,7 +52,7 @@ public class GuessingGame{
        
        catch(InputMismatchException g){
        
-       System.out.println("Your answer contained letters or unidentifiable characters. Please try again. Your guesses have not been affected. ");
+       System.out.println("\n" +"Your answer contained letters or unidentifiable characters. Please try again. Your guesses have not been affected. ");
        
        scan.nextLine();
        
@@ -61,26 +63,38 @@ public class GuessingGame{
          
          
          if (user_num == actualnum){
-            System.out.println("You guessed the number! Congraulatious!");
+            System.out.println("\n" + "You guessed the number! Congraulatious!");
             break;
          }
-            System.out.println("That's not it, but keep trying!");
+   
             
-            int remaining = 10 - (count + 1);
+            int remaining = 5 - (count + 1);
+           
+            if(remaining == 0){
+
+         System.out.println("\n" + "You have " + remaining + " remaining guesses.");
+         
+         System.out.println("\n" + "Game over. The correct number was " + actualnum);
+
+         System.out.println("\n" + "That was a good try. But I know you can do better! Give it another try!");
+
+         break;
+
+            }
             
-            System.out.println("You have " + remaining + " remaining guesses.");
+            else{
+            System.out.println("\n" +"That's not it, but keep trying!");
+
+            System.out.println("\n" + "You have " + remaining + " remaining guesses.");
             
             count++;
+            }
+         }
+         System.out.println("\n" + "If you want to play again, just rerun the program." + "\n");
        }
        
-         if(count == 10){
-         
-         System.out.println("Game over. The correct number was " + actualnum);
-         
-         }
-      
+   
    }
-}
             
       
       
